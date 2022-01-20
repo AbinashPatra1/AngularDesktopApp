@@ -1,0 +1,16 @@
+<div class="container">
+    <h2>Patient Records</h2>
+
+    <table>
+        <tr>
+            <th *ngFor='let column of columns'>
+                {{column}}
+            </th>
+        </tr>
+        <tr *ngFor='let row of rows'>
+            <td *ngFor='let column of columns' (click)="showTestDetails()">
+                {{row[column]}}
+            </td>
+        </tr>
+    </table>
+</div>

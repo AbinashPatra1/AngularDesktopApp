@@ -6,16 +6,12 @@ let win;
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
-        width: 600,
+        width: 1028,
         height: 600
     })
 
 
-    win.loadURL(`file://${__dirname}/dist/AngularDeskTopApp/SplashScreen.html`)
-
-    setTimeout(function () {
-        win.loadURL(`file://${__dirname}/dist/AngularDeskTopApp/index.html`);
-    }, 1000);
+    win.loadURL(`file://${__dirname}/dist/AngularDeskTopApp/index.html`)
 
     //// uncomment below to open the DevTools.
     win.webContents.openDevTools()
@@ -28,6 +24,12 @@ function createWindow() {
     win.once('ready-to-show', function () {
         win.show();
     })
+
+    win.webContents.on('did-fail-load', () => {
+        console.log('did-fail-load');
+        win.loadURL(`file://${__dirname}/dist/AngularDeskTopApp/index.html`)
+        // REDIRECT TO FIRST WEBPAGE AGAIN
+    });
 }
 
 // Create window on electron initialization

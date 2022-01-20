@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-home"></i>
+            <button type="button" id="back" name="back" class="btn btn-primary" (click)="showHome()">
+                Back
+            </button>
+            <h5>
+            Test Details
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div echarts [options]="chartOptions" class="demo-chart"></div>
+                </div>
+                <div class="col-md-6">
+                    <div echarts [options]="chartOptions" class="demo-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
