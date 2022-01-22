@@ -37,3 +37,31 @@ table {
     }
 }
 
+.form-control-borderless:hover,
+.form-control-borderless:active,
+.form-control-borderless:focus {
+    box-shadow: black;
+}
+
+button {
+    margin: 5px;
+}
+
+button[type="submit"] {
+    margin-left: 5px;
+}
+
+button[typpe="button"] {
+    float: right;
+}
+
+.title {
+    float: left;
+}
+
+fieldset {
+    margin: 0;
+    padding: 20px;
+    border: 1px solid rgba(51, 48, 48, 0.425);
+    border-radius: 7px;
+}

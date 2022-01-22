@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <button type="button" id="back" name="back" class="btn btn-primary" (click)="showHome()">
+                <i class="fa fa-home"></i>
+            </button>
+            <h5>
+                New Test
+            </h5>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="patientName">
+                            Patient Name
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Name" id="patientName">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dob">
+                            Date Of Birth
+                        </label>
+                        <div class="input-group">
+                            <input class="form-control" placeholder="dd-mm-yyyy" name="dp" ngbDatepicker
+                                #d="ngbDatepicker" id="dob">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                                    <i class="fa fa-calendar-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="gender">
+                            Gender
+                        </label>
+                        <ng-select id="gender" name="gender" [items]="genders" bindLabel="Name" bindValue="Id"
+                            [(ngModel)]="selectedGender">
+                        </ng-select>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <div class="row charts">
+                <div class="col-md-6">
+                    <div echarts [options]="volumeChartOptions" class="demo-chart"></div>
+                </div>
+                <div class="col-md-6">
+                    <div echarts [options]="flowChartOptions" class="demo-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

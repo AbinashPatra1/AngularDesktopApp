@@ -1,16 +1,86 @@
 <div class="container">
-    <h2>Patient Records</h2>
+    <div class="row justify-content-center search">
+        <div class="col-12 col-md-10 col-lg-8">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <!--end of col-->
+                    <div class="col">
+                        <input class="form-control form-control-lg form-control-borderless" type="search"
+                            placeholder="Search patients">
+                    </div>
+                    <!--end of col-->
+                    <div class="col-auto">
+                        <button class="btn btn-lg btn-primary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <!--end of col-->
+                </div>
+            </form>
+        </div>
+        <!--end of col-->
+    </div>
+    <br>
+    <br>
+    <form>
+        <fieldset>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="title">Test Records</h3>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-primary float-right" type="button" (click)='createNewTest()'>
+                        New Test</button>
+                    <button class="btn btn-primary float-right" type="button"
+                        (click)='openModalPopup(modalData)'>Caliarate</button>
+                </div>
+            </div>
 
-    <table>
-        <tr>
-            <th *ngFor='let column of columns'>
-                {{column}}
-            </th>
-        </tr>
-        <tr *ngFor='let row of rows'>
-            <td *ngFor='let column of columns' (click)="showTestDetails()">
-                {{row[column]}}
-            </td>
-        </tr>
-    </table>
+            <table>
+                <tr>
+                    <th *ngFor='let column of columns'>
+                        {{column}}
+                    </th>
+                </tr>
+                <tr *ngFor='let row of rows'>
+                    <td *ngFor='let column of columns' (click)="showTestDetails()">
+                        {{row[column]}}
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
 </div>
+
+<!-- Modal Popup Code -->
+<ng-template #modalData let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Device Calibration</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>
+            To calibrate the scale follow the following steps.
+        </p>
+        <ol>
+            <li>
+                Empty the mug
+            </li>
+            <li>
+                Press OK
+            </li>
+            <li>
+                Pour 1000 ml liquid in the mug within 15 secs after pressing OK
+            </li>
+            <li>
+                After 15 secs your device is calibrated.
+            </li>
+        </ol>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+    </div>
+</ng-template>
