@@ -2,21 +2,66 @@
     <div class="card">
         <div class="card-header">
             <button type="button" id="back" name="back" class="btn btn-primary" (click)="showHome()">
-                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-home"></i>
             </button>
             <h5>
                 Test Details
             </h5>
         </div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div echarts [options]="chartOptions" class="demo-chart"></div>
+            <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="patientName">
+                            Patient Name
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Name" id="patientName" name="patientName"
+                            [(ngModel)]="patientData.patientName" disabled>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dob">
+                            Date Of Birth
+                        </label>
+                        <div class="input-group">
+                            <input class="form-control" placeholder="dd-mm-yyyy" id="dp" name="dp" ngbDatepicker
+                                #d="ngbDatepicker" id="dob" [(ngModel)]="patientData.dateOfBirth" disabled>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button" disabled>
+                                    <i class="fa fa-calendar-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <div echarts [options]="chartOptions" class="demo-chart"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="gender">
+                            Gender
+                        </label>
+                        <ng-select id="gender" name="gender" [items]="genders" bindLabel="Name" bindValue="Id"
+                        [(ngModel)]="patientData.gender" [disabled]="true">
+                        </ng-select>
+                    </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="remarks">
+                            Patient Remarks
+                        </label>
+                        <textarea class="form-control" name="remarks" id="remarks" rows="5" [(ngModel)]="patientData.remarks" disabled></textarea>
+                    </div>
+                </div>
+                <br>
+                <div class="row charts">
+                    <div class="col-md-6">
+                        <div echarts [options]="volumeChartOptions" class="demo-chart"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div echarts [options]="flowChartOptions" class="demo-chart"></div>
+                    </div>
+                </div>
+                <br>
+            </form>
         </div>
     </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { EChartsOption } from 'echarts';
 import { Router } from '@angular/router';
 
@@ -9,8 +10,14 @@ import { Router } from '@angular/router';
 })
 export class NewTestComponent implements OnInit {
 
-  public genders :any = [];
-  public selectedGender : any;
+  public patientForm = new FormGroup({
+    patientName : new FormControl(''),
+    dateOfBirth : new FormControl(''),
+    gender : new FormControl(''),
+    remarks : new FormControl('')
+  });
+  public genders: any = [];
+  public selectedGender: any;
   public volumeChartOptions: EChartsOption = {};
   public flowChartOptions: EChartsOption = {};
 
@@ -19,16 +26,16 @@ export class NewTestComponent implements OnInit {
   ngOnInit(): void {
     this.genders = [
       {
-        Id : 1,
-        Name : 'Male'
+        Id: 1,
+        Name: 'Male'
       },
       {
-        Id : 1,
-        Name : 'Female'
+        Id: 1,
+        Name: 'Female'
       },
       {
-        Id : 1,
-        Name : 'Others'
+        Id: 1,
+        Name: 'Others'
       }
     ];
     this.getChartOptions();
@@ -36,28 +43,28 @@ export class NewTestComponent implements OnInit {
 
   public getChartOptions() {
     this.volumeChartOptions = {
-      title : {
-        text : 'Volume Test'
+      title: {
+        text: 'Volume Test'
       },
-      legend : {
-        data : ['Standard Result', 'Test Result']
+      legend: {
+        data: ['Standard Result', 'Test Result']
       },
-      tooltip : {
+      tooltip: {
 
       },
       xAxis: {
         type: 'category',
-        name : 'Time(10 secs/div)',
-        nameLocation : 'middle',
-        nameGap : 40,
+        name: 'Time(10 secs/div)',
+        nameLocation: 'middle',
+        nameGap: 40,
         boundaryGap: false,
-        data: [10,20,30,40,50,60,70,80,90,100]
+        data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
       },
       yAxis: {
         type: 'value',
-        name : 'Volume(200 ml/div)',
-        nameGap : 40,
-        nameLocation : 'middle'
+        name: 'Volume(200 ml/div)',
+        nameGap: 40,
+        nameLocation: 'middle'
       },
       series: [{
         data: [820, 932, 901, 934],
@@ -67,28 +74,28 @@ export class NewTestComponent implements OnInit {
     }
 
     this.flowChartOptions = {
-      title : {
-        text : 'Flowrate Test'
+      title: {
+        text: 'Flowrate Test'
       },
-      legend : {
-        data : ['Standard Result', 'Test Result']
+      legend: {
+        data: ['Standard Result', 'Test Result']
       },
-      tooltip : {
+      tooltip: {
 
       },
       xAxis: {
         type: 'category',
-        name : 'Time(10 secs/div)',
-        nameLocation : 'middle',
-        nameGap : 40,
+        name: 'Time(10 secs/div)',
+        nameLocation: 'middle',
+        nameGap: 40,
         boundaryGap: false,
-        data: [10,20,30,40,50,60,70,80,90,100]
+        data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
       },
       yAxis: {
         type: 'value',
-        name : 'Flowrate(10 ml/sec/div)',
-        nameGap : 40,
-        nameLocation : 'middle'
+        name: 'Flowrate(10 ml/sec/div)',
+        nameGap: 40,
+        nameLocation: 'middle'
       },
       series: [{
         data: [820, 932, 901, 934],

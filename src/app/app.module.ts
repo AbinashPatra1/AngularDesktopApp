@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -12,6 +12,10 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { TestDetailsComponent } from './test-details/test-details.component';
 import { NewTestComponent } from './new-test/new-test.component';
+import { HelpComponent } from './help/help.component';
+
+import { TestService } from './services/test-service.service';
+
 
 @NgModule({
   declarations: [
@@ -19,11 +23,13 @@ import { NewTestComponent } from './new-test/new-test.component';
     HeaderComponent,
     HomeComponent,
     TestDetailsComponent,
-    NewTestComponent
+    NewTestComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     NgSelectModule,
     AppRoutingModule,
     NgbModule,
@@ -31,7 +37,7 @@ import { NewTestComponent } from './new-test/new-test.component';
       echarts: () => import('echarts')
     })
   ],
-  providers: [],
+  providers: [TestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,11 +6,13 @@
                     <!--end of col-->
                     <div class="col">
                         <input class="form-control form-control-lg form-control-borderless" type="search"
-                            placeholder="Search patients">
+                            placeholder="Search patients" id="searchBox" name="searchBox" [(ngModel)]="searchValue"
+                            (keydown.enter)="getFilteredPatients()">
                     </div>
                     <!--end of col-->
                     <div class="col-auto">
-                        <button class="btn btn-lg btn-primary" type="submit">
+                        <button class="btn btn-lg btn-primary" type="button" id="search" name="search"
+                            (click)="getFilteredPatients()">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -29,7 +31,7 @@
                     <h3 class="title">Test Records</h3>
                 </div>
                 <div class="col-md-6">
-                    <button class="btn btn-primary float-right" type="button" (click)='createNewTest()'>
+                    <button class="btn btn-primary float-right" type="button" (click)='createNewTest(-1)'>
                         New Test</button>
                     <button class="btn btn-primary float-right" type="button"
                         (click)='openModalPopup(modalData)'>Caliarate</button>
@@ -39,15 +41,18 @@
             <table>
                 <tr>
                     <th *ngFor='let column of columns'>
-                        {{column}}
+                        {{column.Title}}
                     </th>
                 </tr>
-                <tr *ngFor='let row of rows'>
-                    <td *ngFor='let column of columns' (click)="showTestDetails()">
-                        {{row[column]}}
+                <tr *ngFor='let row of filteredRows | slice: (page-1) * pageSize : page * pageSize;let i = index'>
+                    <td *ngFor='let column of columns' (click)="showTestDetails(i)">
+                        {{row[column.Name]}}
                     </td>
                 </tr>
             </table>
+
+            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="filteredRows.length">
+            </ngb-pagination>
         </fieldset>
     </form>
 </div>
